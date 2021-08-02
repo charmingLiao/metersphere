@@ -546,6 +546,11 @@ public class ApiDefinitionService {
         if (CollectionUtils.isNotEmpty(cases)) {
             int batchCount = 0;
             int nextNum = 0;
+            ApiTestCaseWithBLOBs testCase = cases.get(0);
+            ApiDefinitionWithBLOBs apiDefinitionWithBLOBs = apiDefinitionMapper.selectByPrimaryKey(testCase.getApiDefinitionId());
+            if (apiDefinitionWithBLOBs == null) {
+                return;
+            }
             for (int i = 0; i < cases.size(); i++) {
                 ApiTestCaseWithBLOBs item = cases.get(i);
                 if (i == 0) {

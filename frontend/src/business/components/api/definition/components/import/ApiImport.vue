@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :close-on-click-modal="false" :title="$t('api_test.api_import.title')" width="30%"
+  <el-dialog :close-on-click-modal="false" :title="$t('api_test.api_import.title')" width="55%"
              :visible.sync="visible" class="api-import" v-loading="result.loading" @close="close"
              :destroy-on-close="true">
 
@@ -164,6 +164,13 @@
           exportTip: this.$t('api_test.api_import.esb_export_tip'),
           suffixes: new Set(['xlsx', 'xls'])
         },
+        jmeterPlatform: {
+          name: 'JMeter',
+          value: 'Jmeter',
+          tip: this.$t('api_test.api_import.jmeter_tip'),
+          exportTip: this.$t('api_test.api_import.jmeter_export_tip'),
+          suffixes: new Set(['jmx'])
+        },
         selectedPlatform: {},
         selectedPlatformValue: 'Metersphere',
         result: {},
@@ -189,6 +196,7 @@
       this.platforms.push(this.postmanPlanform);
       this.platforms.push(this.swaggerPlanform);
       this.platforms.push(this.harPlanform);
+      this.platforms.push(this.jmeterPlatform);
       this.selectedPlatform = this.platforms[0];
     },
     watch: {
